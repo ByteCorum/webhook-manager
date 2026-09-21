@@ -9,7 +9,6 @@ on:
 jobs:
     build:
         runs-on: windows-latest
-
         steps:
             - uses: actions/checkout@v7
 
@@ -24,7 +23,6 @@ jobs:
                   pip install -r requirements.txt
 
             - name: Build Executable
-              working-directory: scr
               run: |
                   .\build-win.cmd
 
