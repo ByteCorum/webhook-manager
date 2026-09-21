@@ -1,6 +1,6 @@
 #!/bin/bash
 
-python.exe -m nuitka \
+python3 -m nuitka \
     --follow-imports \
     --remove-output \
     --assume-yes-for-downloads \
