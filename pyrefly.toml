@@ -1,3 +1,8 @@
+# pyrefly.tom; Configuration for pyrefly (https://pyrefly.org/en/docs/configuration/)
+# A fast type checker and language server for Python with powerful IDE features
+# Install: pip install pyrefly
+# Usage: pyrefly check
+
 project-includes = [
     "**/*.py*",
     "**/*.ipynb",
@@ -10,3 +15,9 @@ project-excludes = [
     "**/.pyvenv/**",
     "**/__pycache__/**"
 ]
+
+search-path = ["src"]
+
+python-platform = "all"
+min-severity = "info"
+preset = "strict" #default
