@@ -162,3 +162,5 @@ cython_debug/
 # Project specific
 data/
 webhook-manager*
+main.*/
+com.*.webhook_manager*

@@ -3,13 +3,17 @@ import customtkinter as ct
 from func import Func
 from tkinter import filedialog
 from PIL import Image as Img
+from os import path
 
 class GUI:
     def __init__(self) -> None:
         self.win = ct.CTk()
         self.setTheme = ct.StringVar(value="dark")
-        self.icon = "resources/icon.png"
-        self.gitimg = "resources/git.png"
+        self.appRoot = path.dirname(path.abspath(__file__))
+        self.gitimg = f"{self.appRoot}/resources/git.png"
+        # wait_gate = ct.StringVar()
+        # self.win.bind("<Button-1>", lambda e: wait_gate.set("go"))
+        # self.win.wait_variable(wait_gate)   # freezes here until user clicks
         self.WinProperties()
         self.count = 100
         self.action = False
@@ -47,9 +51,8 @@ class GUI:
         self.win.title("webhook-manager")
         self.win.resizable(False, False)
         self.win.configure(fg_color="#242424")
-        self.win.iconbitmap(self.icon)
         ct.set_appearance_mode('dark')
-        ct.set_default_color_theme('resources/theme.json')
+        ct.set_default_color_theme(f"{self.appRoot}/resources/theme.json")
 
     def Menu(self):
         self.LoadHooks()
