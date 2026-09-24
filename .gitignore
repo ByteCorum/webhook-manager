@@ -160,7 +160,5 @@ cython_debug/
 #.idea/
 
 # Project specific
-/data
-/data/**
-**/data/**
-webhook-controller.exe
+data/
+webhook-controller*

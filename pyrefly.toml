@@ -1,0 +1,12 @@
+project-includes = [
+    "**/*.py*",
+    "**/*.ipynb",
+]
+
+project-excludes = [
+    "**/venv/**",
+    "**/.venv/**",
+    "**/pyvenv/**",
+    "**/.pyvenv/**",
+    "**/__pycache__/**"
+]

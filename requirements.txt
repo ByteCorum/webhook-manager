@@ -3,3 +3,5 @@ customtkinter
 Requests
 Pillow
 Nuitka
+#pyrefly
+#yamllint
