@@ -31,13 +31,12 @@ jobs:
               shell: bash
               run: |
                   ./build-scripts/build-win.cmd
-                  tree -fa
 
             - name: Verify build outputs
               shell: bash
               run: |
                   expected=(
-                      "scr/webhook-manager"
+                      "webhook-manager"
                   )
 
                   for file in "${expected[@]}"; do
@@ -59,4 +58,4 @@ jobs:
               with:
                   name: webhook-manager-win_${{ steps.vars.outputs.sha_short }}
                   path: |
-                      scr/webhook-manager
+                      webhook-manager

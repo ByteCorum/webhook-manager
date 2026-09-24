@@ -30,12 +30,11 @@ jobs:
               run: |
                   chmod +x ./build-scripts/build-mac.sh
                   ./build-scripts/build-mac.sh
-                  tree -af
 
             - name: Verify build outputs
               run: |
                   expected=(
-                      "scr/webhook-manager"
+                      "webhook-manager"
                   )
 
                   for file in "${expected[@]}"; do
@@ -57,4 +56,4 @@ jobs:
               with:
                   name: webhook-manager-mac_${{ steps.vars.outputs.sha_short }}
                   path: |
-                      scr/webhook-manager
+                      webhook-manager
