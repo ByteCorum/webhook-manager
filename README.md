@@ -1,7 +1,9 @@
 ![logo](images/logo.png)
 
-### WebhookController
+### webhook-manager
+
 🌐The prog for controlling discord webhooks written on python
+
 <p>
   <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue">
   <img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">
@@ -10,7 +12,7 @@
   <img src="https://img.shields.io/badge/tests-98/100-76B900?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/code quality-B+-76B900?style=for-the-badge&logo=&logoColor=whit">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=&logoColor=whit">
-  <img src="https://img.shields.io/badge/WebhookController-v1.0.0-blue?style=for-the-badge&logo=&logoColor=whit">
+  <img src="https://img.shields.io/badge/webhook-manager-v1.0.0-blue?style=for-the-badge&logo=&logoColor=whit">
 </p>
 
 ---
@@ -36,6 +38,7 @@ fast work and sending
 ---
 
 ### 🔐Secure
+
 All saved webhooks are stored locally encrypted with 2 keys and 3 ways
 
 ![5](images/Screenshot_5.png)
@@ -49,6 +52,7 @@ Install required modules `pip install -r requirements.txt`
 Run `pack.bat` to pack .py scripts into exe
 
 ---
+
 ### ❌Builder errors
 
 If you have error like this:

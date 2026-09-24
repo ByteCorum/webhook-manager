@@ -20,7 +20,7 @@ class GUI:
         if self.scroll:
             self.win.bind("<MouseWheel>", self.mouse_wheel)
         self.win.mainloop()
-    
+
     def mouse_wheel(self, event):
         self.count = 100
         if event.num == 5 or event.delta == -120:
@@ -40,14 +40,14 @@ class GUI:
             except Exception as e:
                 print(e)
 
-    
+
     def WinProperties(self):
-        self.win.geometry("500x600+560+240")  
+        self.win.geometry("500x600+560+240")
         self.win.minsize(500,300)
-        self.win.title("Webhook-Controller") 
-        self.win.resizable(False, False)  
+        self.win.title("webhook-manager")
+        self.win.resizable(False, False)
         self.win.configure(fg_color="#242424")
-        self.win.iconbitmap(self.icon)  
+        self.win.iconbitmap(self.icon)
         ct.set_appearance_mode('dark')
         ct.set_default_color_theme('resources/theme.json')
 
@@ -55,7 +55,7 @@ class GUI:
         self.LoadHooks()
         self.uperFame = ct.CTkFrame(master=self.win, width=500, height=70, fg_color="#303030")
         self.uperFame.place(x=0, y=0)
-        self.header = ct.CTkLabel(master=self.win, text="Webhook-Controller", font=('Arial Rounded MT bold', 30), bg_color='#303030', text_color='#14A5AE')
+        self.header = ct.CTkLabel(master=self.win, text="webhook-manager", font=('Arial Rounded MT bold', 30), bg_color='#303030', text_color='#14A5AE')
         self.header.place(x=100, y=15)
         self.addNew = ct.CTkButton(master=self.win, text="+", font=('Arial Rounded MT bold', 45), width=65, bg_color='#303030',border_color='#14A5AE',
                        command=lambda: [self.AddHook()])
@@ -63,7 +63,7 @@ class GUI:
         gitimage = ct.CTkImage(light_image=Image.open(self.gitimg),dark_image=Image.open(self.gitimg),size=(30, 30))
         self.gitButton = ct.CTkButton(master=self.win,text = '',image=gitimage,font=('Arial Rounded MT bold', 24),width=35,height=30,command=Func.Git,corner_radius = 8, bg_color='#303030',border_color='#14A5AE')
         self.gitButton.place(x=445, y=5)
-    
+
     def LoadHooks(self):
         hooksList = Func.GetHooks()
         if hooksList!= 'null':
@@ -76,7 +76,7 @@ class GUI:
                     self.webhook.append(ct.CTkLabel(master=self.win, text=hooksList[i][0], font=('Arial Rounded MT bold', 24), bg_color='#303030', text_color='#14A5AE'))
                     self.webhook.append(ct.CTkTextbox(master=self.win, width=430, height=65, fg_color="#404040", bg_color='#303030'))
                     self.webhook.append(ct.CTkButton(master=self.win, text="delete", font=('Arial Rounded MT bold', 18), width=30, bg_color='#303030',
-                              command=lambda current_url=self.webhook[2]: [Func.DelHook(current_url.get("0.0", "end")),self.win.destroy(), GUI()], 
+                              command=lambda current_url=self.webhook[2]: [Func.DelHook(current_url.get("0.0", "end")),self.win.destroy(), GUI()],
                               border_color="#872D26", hover_color='#872D26'))
                     self.webhook.append(ct.CTkButton(master=self.win, text="choose", font=('Arial Rounded MT bold', 18), bg_color='#303030',
                             command=lambda current_url=self.webhook[2]: [self.ChooseHook(current_url.get("0.0", "end"))], width=20, border_color="#50C878", hover_color='#50C878'))
@@ -92,7 +92,7 @@ class GUI:
 
                     self.webhooks.append(self.webhook)
                     hooks.append(self.webhook[2])
-                
+
                 self.minPos = self.count * -1 + self.count -(self.count-150*4 - 100)
                 if self.count < 600:
                     self.scroll = False
@@ -118,10 +118,10 @@ class GUI:
         self.text.place(x=20, y=120)
         send= ct.CTkButton(master=self.win, text="send", font=('Arial Rounded MT bold', 24), bg_color='#242424',
                             command=lambda: [Func.Send(str_url,self.text.get("0.0", "end"),self.files_list),self.CleanFiles()], width=20, border_color="#50C878", hover_color='#50C878')
-        
+
         addFile= ct.CTkButton(master=self.win, text="Add file", font=('Arial Rounded MT bold', 18), bg_color='#303030',
                             command=lambda: [self.LoadFile()], width=20, border_color="#14A5AE", hover_color='#303030',corner_radius=8)
-        
+
         files = ct.CTkLabel(master=self.win, textvariable = self.files ,width=400, bg_color='#303030', fg_color="#262626",font=('Arial Rounded MT bold', 18),anchor = 'w', corner_radius=6)
 
         close = ct.CTkButton(master=self.win, text="⨉", font=('Arial Rounded MT bold', 18),width=25,height=30,corner_radius = 10, bg_color='#303030',
@@ -131,7 +131,7 @@ class GUI:
         addFile.place(x=5, y=503)
         files.place(x=93, y=505)
         send.place(x=205, y=557)
-    
+
 
     def CleanFiles(self):
         self.files_list =[]
@@ -164,7 +164,7 @@ class GUI:
         else:
             self.files.set(self.files.get()+fileNames)
 
-        
+
 
     def AddHook(self):
         if not self.action:
@@ -178,7 +178,7 @@ class GUI:
             apply = ct.CTkButton(master=self.win, text="⩗", font=('Arial Rounded MT bold', 18),width=35,height=30,corner_radius = 10, bg_color='#303030',
                           command=lambda: [Func.AddHook(url.get()),self.win.destroy(), GUI()],
                           border_color="#50C878", hover_color='#50C878')
-        
+
             close = ct.CTkButton(master=self.win, text="⨉", font=('Arial Rounded MT bold', 18),width=35,height=30,corner_radius = 10, bg_color='#303030',
                           command=lambda: [fame.destroy(), title.destroy(), close.destroy(), url.destroy(), apply.destroy(), self.EndAction()],
                           border_color="#872D26", hover_color='#872D26')
