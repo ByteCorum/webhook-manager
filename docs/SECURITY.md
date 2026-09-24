@@ -10,7 +10,7 @@ We take the security of this project seriously. If you believe you have found a 
 
 The preferred channel is private vulnerability reporting:
 
-[Report a vulnerability](https://github.com/{VAR_USERNAME}/{VAR_REPO}/security/advisories/new)
+[Report a vulnerability](https://github.com/ByteCorum/webhook-manager/security/advisories/new)
 
 This creates a private communication channel between you and the maintainers. Alternatively, contact owners with the details via {VAR_CONTACT_LINK}.
 
