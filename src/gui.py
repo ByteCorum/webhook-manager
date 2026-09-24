@@ -2,14 +2,14 @@ from tkinter import *
 import customtkinter as ct
 from func import Func
 from tkinter import filedialog
-from PIL import Image
+from PIL import Image as Img
 
 class GUI:
     def __init__(self) -> None:
         self.win = ct.CTk()
         self.setTheme = ct.StringVar(value="dark")
-        self.icon = "resources\\icon.ico"
-        self.gitimg = "resources\\git.png"
+        self.icon = "resources/icon.png"
+        self.gitimg = "resources/git.png"
         self.WinProperties()
         self.count = 100
         self.action = False
@@ -21,7 +21,7 @@ class GUI:
             self.win.bind("<MouseWheel>", self.mouse_wheel)
         self.win.mainloop()
 
-    def mouse_wheel(self, event):
+    def mouse_wheel(self, event:Event):
         self.count = 100
         if event.num == 5 or event.delta == -120:
             self.change -= 50
@@ -60,7 +60,7 @@ class GUI:
         self.addNew = ct.CTkButton(master=self.win, text="+", font=('Arial Rounded MT bold', 45), width=65, bg_color='#303030',border_color='#14A5AE',
                        command=lambda: [self.AddHook()])
         self.addNew.place(x=5, y=5)
-        gitimage = ct.CTkImage(light_image=Image.open(self.gitimg),dark_image=Image.open(self.gitimg),size=(30, 30))
+        gitimage = ct.CTkImage( light_image=Img.open(self.gitimg), dark_image=Img.open(self.gitimg), size=(30, 30))
         self.gitButton = ct.CTkButton(master=self.win,text = '',image=gitimage,font=('Arial Rounded MT bold', 24),width=35,height=30,command=Func.Git,corner_radius = 8, bg_color='#303030',border_color='#14A5AE')
         self.gitButton.place(x=445, y=5)
 
@@ -100,12 +100,11 @@ class GUI:
                 print(e)
 
 
-    def ChooseHook(self,url):
+    def ChooseHook(self, url:str):
         self.files_list =[]
         self.files = ct.StringVar(value="files")
-        str_url = str(url)
-        str_url = str_url.replace('\n','')
-        name = Func.get_webhook_name(str_url)
+        url = url.replace('\n','')
+        name = Func.get_webhook_name(url)
         plate = ct.CTkFrame(master=self.win, width=500, height=600, fg_color="#242424")
         plate.place(x=0, y=0)
         uperFame = ct.CTkFrame(master=self.win, width=500, height=70, fg_color="#303030")
@@ -117,7 +116,7 @@ class GUI:
         self.text = ct.CTkTextbox(master=self.win, width=460, height=360, fg_color="#404040", bg_color='#303030', border_color="#14A5AE", border_width=2)
         self.text.place(x=20, y=120)
         send= ct.CTkButton(master=self.win, text="send", font=('Arial Rounded MT bold', 24), bg_color='#242424',
-                            command=lambda: [Func.Send(str_url,self.text.get("0.0", "end"),self.files_list),self.CleanFiles()], width=20, border_color="#50C878", hover_color='#50C878')
+                            command=lambda: [Func.Send(url,self.text.get("0.0", "end"),self.files_list),self.CleanFiles()], width=20, border_color="#50C878", hover_color='#50C878')
 
         addFile= ct.CTkButton(master=self.win, text="Add file", font=('Arial Rounded MT bold', 18), bg_color='#303030',
                             command=lambda: [self.LoadFile()], width=20, border_color="#14A5AE", hover_color='#303030',corner_radius=8)
@@ -176,7 +175,7 @@ class GUI:
             url = ct.CTkEntry(master=self.win, width=400, bg_color='#303030', fg_color="#262626",font=('Arial Rounded MT bold', 18), placeholder_text="WebHook URL")
             url.place(x=10, y=35)
             apply = ct.CTkButton(master=self.win, text="⩗", font=('Arial Rounded MT bold', 18),width=35,height=30,corner_radius = 10, bg_color='#303030',
-                          command=lambda: [Func.AddHook(url.get()),self.win.destroy(), GUI()],
+                          command=lambda: [Func.AddHook(url.get()), self.win.destroy(), GUI()],
                           border_color="#50C878", hover_color='#50C878')
 
             close = ct.CTkButton(master=self.win, text="⨉", font=('Arial Rounded MT bold', 18),width=35,height=30,corner_radius = 10, bg_color='#303030',

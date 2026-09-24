@@ -5,11 +5,11 @@ import os
 
 if __name__ == "__main__":
     try:
-        os.makedirs("data\\")
+        os.makedirs("data/")
     except:
         pass
-    if not os.path.exists("data\\key.db"):
+    if not os.path.exists("data/key.db"):
         key = Crypt.GenerateKey()
-        enc_key = Crypt.Encrypt64(key)
-        File.Write(enc_key,"data\\key.db")
+        enc_key = Crypt.Encrypt64(str(key))
+        File.Write(enc_key,"data/key.db")
     gui.GUI()

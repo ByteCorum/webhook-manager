@@ -1,6 +1,8 @@
 class File:
-    def Write (contexts,FILENAME, ready = False):
-        with open(FILENAME, 'wb') as file:
+
+    @staticmethod
+    def Write (contexts:str, filename:str, ready:bool = False):
+        with open(filename, 'wb') as file:
             if isinstance(contexts, str):
                 if contexts != "create":
                     if not ready:
@@ -11,13 +13,15 @@ class File:
                 for context in contexts:
                     file.write(bytes('[/bin/%context%/]'+context, "UTF-8"))
 
-    def Add(context,FILENAME):
-        with open(FILENAME, 'ab') as file:
+    @staticmethod
+    def Add(context:str,filename:str):
+        with open(filename, 'ab') as file:
             file.write(bytes('[/bin/%context%/]'+context, "UTF-8"))
-    
-    def Read(FILENAME):
+
+    @staticmethod
+    def Read(filename:str):
         try:
-            with open(FILENAME, 'rb') as file:
+            with open(filename, 'rb') as file:
                 data = file.read()
                 data = data.decode("utf-8")
                 list = data.split("[/bin/%context%/]")
@@ -27,4 +31,4 @@ class File:
                     pass
                 return list
         except:
-            return "null"
+            return ["null"]
