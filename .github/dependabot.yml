@@ -13,20 +13,14 @@ updates:
           - "type: maintenance"
           - "size: S"
 
-    # Native (git) submodules and vendored dependency updates
-    - package-ecosystem: "gitsubmodule"
+    # Python version updates
+    - package-ecosystem: "pip"
       directory: "/"
       schedule:
           interval: "weekly"
       commit-message:
           prefix: "chore"
           include: "scope"
-
-    # Docker base-image updates
-    - package-ecosystem: "docker"
-      directory: "/"
-      schedule:
-          interval: "weekly"
-      commit-message:
-          prefix: "chore"
-          include: "scope"
+      labels:
+          - "type: maintenance"
+          - "size: S"
