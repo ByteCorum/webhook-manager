@@ -20,6 +20,8 @@ class GUI:
         self.Menu()
         if self.scroll:
             self.win.bind("<MouseWheel>", self.mouse_wheel)
+            self.win.bind_all("<Button-4>", self.mouse_wheel)
+            self.win.bind_all("<Button-5>", self.mouse_wheel)
         self.win.mainloop()
 
     def mouse_wheel(self, event:Event):
@@ -29,7 +31,7 @@ class GUI:
         if event.num == 4 or event.delta == 120:
             self.change += 50
         if self.count+self.change <= 100 and self.count+self.change >=self.minPos:
-            #print(self.count+self.change)
+            print(self.count+self.change)
             try:
                 for i in range(len(self.webhooks)):
                     self.webhooks[i][0].place(x=25, y=self.count+self.change)
@@ -37,7 +39,7 @@ class GUI:
                     self.webhooks[i][1].place(x=35, y=self.count + 10+self.change)
                     self.webhooks[i][3].place(x=380, y=self.count + 10+self.change)
                     self.webhooks[i][4].place(x=280, y=self.count + 10+self.change)
-                    self.count = self.count + 150
+                    self.count = self.count + 130
             except Exception as e:
                 print(e)
 
@@ -88,12 +90,12 @@ class GUI:
                     self.webhook[1].place(x=35, y=self.count + 10)
                     self.webhook[3].place(x=380, y=self.count + 6)
                     self.webhook[4].place(x=280, y=self.count + 6)
-                    self.count = self.count + 150
+                    self.count = self.count + 130
 
                     self.webhooks.append(self.webhook)
                     hooks.append(self.webhook[2])
 
-                self.minPos = self.count * -1 + self.count -(self.count-150*4 - 100)
+                self.minPos = self.count * -1 + self.count -(self.count-130*4 - 100)
                 if self.count < 600:
                     self.scroll = False
             except Exception as e:
