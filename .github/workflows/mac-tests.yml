@@ -30,6 +30,8 @@ jobs:
               run: |
                   chmod +x ./build-scripts/build-mac.sh
                   ./build-scripts/build-mac.sh
+                  pwd
+                  tree -f
 
             - name: Verify build outputs
               run: |
