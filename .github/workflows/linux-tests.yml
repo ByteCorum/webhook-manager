@@ -57,3 +57,4 @@ jobs:
                   name: webhook-manager-linux_${{ steps.vars.outputs.sha_short }}
                   path: |
                       webhook-manager
+                      com.*.webhook_manager*
