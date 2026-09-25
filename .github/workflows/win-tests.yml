@@ -36,7 +36,7 @@ jobs:
               shell: bash
               run: |
                   expected=(
-                      "webhook-manager"
+                      "webhook-manager.exe"
                   )
 
                   for file in "${expected[@]}"; do
@@ -58,4 +58,4 @@ jobs:
               with:
                   name: webhook-manager-win_${{ steps.vars.outputs.sha_short }}
                   path: |
-                      webhook-manager
+                      webhook-manager.exe
