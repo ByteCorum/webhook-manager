@@ -16,17 +16,92 @@ In particular:
 
 ## Environment Setup
 
-TODO
+### Prerequisites
 
-<!-- Describe here how to build and run the project locally.
-     Required content:
+- Python: `3.14`
+- Package Manager: `pip`
+- Tools: `pyrefly`, `yamllint`, `editorconfig`
 
-     1. Prerequisites: language version, package manager, tools
-     2. Clone and dependency installation commands
-     3. Build command
-     4. Test command
-     5. Lint / format command
--->
+### Retrieve the Code
+
+In your favorite terminal emulator type:
+
+```
+https://github.com/ByteCorum/webhook-manager.git && cd webhook-manager
+```
+
+### Prepare Environment and Install the Dependencies
+
+Prepare the virtual enviroment
+
+```
+python3 -m venv .pyvenv
+source ./.pyvenv/bin/activate
+```
+
+Install the build dependencies
+
+```
+python3 -m pip install --upgrade pip && pip3 install -r requirements.txt
+```
+
+Install the development dependencies
+
+```
+pip3 install pyrefly yamllint
+```
+
+### Lint and Format Command
+
+#### Codebase Lint
+
+We recommend using code editor with support of `pyrefly`, but any way you can still run check from your terminal.
+
+Run check from terminal:
+
+```
+pyrefly check
+```
+
+Before committing make sure `pyrefly` finds no error and you tried your best to reduce warnings.
+
+#### Workflows Lint
+
+For workflows static syntax check we use `yamllint`.
+
+```
+yamllint .github/workflows
+```
+
+Before committing make sure `yamllint` finds no error and you tried your best to reduce warnings.
+
+#### Code Formatting
+
+This project uses `.editorconfig` file to format and style code, so please your editor should support and honor it.
+
+### Code Tests
+
+Current code tests should run on forks with no future configuration.
+
+### Build Process
+
+On Linux/Mac:
+
+```
+# Linux
+chmod +x ./build-scripts/build-linux.sh && ./build-scripts/build-linux.sh
+
+# Mac
+chmod +x ./build-scripts/build-mac.sh && ./build-scripts/build-mac.sh
+```
+
+On Windows:
+
+```
+./build-scripts/build-win.cmd
+```
+
+You will find build executable in project root.
 
 ## Making Changes
 

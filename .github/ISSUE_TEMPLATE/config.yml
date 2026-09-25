@@ -13,7 +13,3 @@ contact_links:
     # - name: Report a Security Vulnerability
     #   url: https://github.com/ByteCorum/webhook-manager/security/advisories/new
     #   about: Report vulnerabilities privately via a GitHub Security Advisory - please do not open a public issue for security problems.
-
-    - name: Contact the Author
-      url: "{VAR_CONTACT_LINK}"
-      about: "{VAR_CONTACT_LINK_DESCRIPTION} - for matters that do not belong to any of this categories"

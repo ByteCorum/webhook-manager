@@ -28,11 +28,6 @@ Please include as much of the following as possible:
 
 ## Supported Versions
 
-| Version               | Supported |
-| --------------------- | --------- |
-| {VAR_VERSION_MAJOR}.x | Yes       |
-| < {VAR_VERSION_MAJOR} | No        |
-
 Only the latest major release receives security fixes.
 
 ## Disclosure Policy
