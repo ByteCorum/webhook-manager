@@ -62,14 +62,13 @@ class Func:
     @staticmethod
     # pyrefly: ignore [not-a-type]
     def DelHook(url: str):
-        str_url = str(url)
-        str_url = str_url.replace('\n','')
+        url = url.replace('\n','')
         dataList = Func.GetHooks()
         key = Func.GetKey()
         string= ''
         for x in range(len(dataList)):
             #print(dataList[x][1]+'?='+str_url)
-            if dataList[x][1] != str_url:
+            if dataList[x][1] != url:
                 #print(dataList[x][1]+'!='+str_url)
                 enc_url = Crypt.Encrypt(dataList[x][1],key)
                 string +='[/bin/%context%/]'+dataList[x][0]+"[/hook/%context%/]"+enc_url.decode("utf-8")

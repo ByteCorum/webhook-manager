@@ -37,8 +37,8 @@ class GUI:
                     self.webhooks[i][0].place(x=25, y=self.count+self.change)
                     self.webhooks[i][2].place(x=35, y=self.count + 45+self.change)
                     self.webhooks[i][1].place(x=35, y=self.count + 10+self.change)
-                    self.webhooks[i][3].place(x=380, y=self.count + 10+self.change)
-                    self.webhooks[i][4].place(x=280, y=self.count + 10+self.change)
+                    self.webhooks[i][3].place(x=380, y=self.count + 6+self.change)
+                    self.webhooks[i][4].place(x=280, y=self.count + 6+self.change)
                     self.count = self.count + 130
             except Exception as e:
                 print(e)
@@ -47,7 +47,7 @@ class GUI:
     def WinProperties(self):
         self.win.geometry("500x600+560+240")
         self.win.minsize(500,300)
-        self.win.title("webhook-manager")
+        self.win.title("Webhook Manager")
         self.win.resizable(False, False)
         self.win.configure(fg_color="#242424")
         ct.set_appearance_mode('dark')
@@ -57,13 +57,13 @@ class GUI:
         self.LoadHooks()
         self.uperFame = ct.CTkFrame(master=self.win, width=500, height=70, fg_color="#303030")
         self.uperFame.place(x=0, y=0)
-        self.header = ct.CTkLabel(master=self.win, text="webhook-manager", font=('Arial Rounded MT bold', 30), bg_color='#303030', text_color='#14A5AE')
+        self.header = ct.CTkLabel(master=self.win, text="Webhook Manager", font=('Noto Sans', 30), bg_color='#303030', text_color='#14A5AE')
         self.header.place(x=100, y=15)
-        self.addNew = ct.CTkButton(master=self.win, text="+", font=('Arial Rounded MT bold', 40), width=65,height=60, bg_color='#303030',border_color='#14A5AE',
+        self.addNew = ct.CTkButton(master=self.win, text="+", font=('Noto Sans', 40), width=65,height=60, bg_color='#303030',border_color='#14A5AE',
                        command=lambda: [self.AddHook()])
         self.addNew.place(x=5, y=5)
         gitimage = ct.CTkImage( light_image=Img.open(self.gitimg), dark_image=Img.open(self.gitimg), size=(30, 30))
-        self.gitButton = ct.CTkButton(master=self.win,text = '',image=gitimage,font=('Arial Rounded MT bold', 24),width=35,height=30,command=Func.Git,corner_radius = 8, bg_color='#303030',border_color='#14A5AE')
+        self.gitButton = ct.CTkButton(master=self.win,text = '',image=gitimage,font=('Noto Sans', 24),width=35,height=30,command=Func.Git,corner_radius = 8, bg_color='#303030',border_color='#14A5AE')
         self.gitButton.place(x=445, y=5)
 
     def LoadHooks(self):
@@ -75,12 +75,12 @@ class GUI:
                 for i in range(len(hooksList)):
                     self.webhook = []
                     self.webhook.append(ct.CTkFrame(master=self.win, width=450, height=120, fg_color="#303030", border_color="#14A5AE", border_width=2))
-                    self.webhook.append(ct.CTkLabel(master=self.win, text=hooksList[i][0], font=('Arial Rounded MT bold', 24), bg_color='#303030', text_color='#14A5AE'))
+                    self.webhook.append(ct.CTkLabel(master=self.win, text=hooksList[i][0], font=('Noto Sans', 24), bg_color='#303030', text_color='#14A5AE'))
                     self.webhook.append(ct.CTkTextbox(master=self.win, width=430, height=65, fg_color="#404040", bg_color='#303030'))
-                    self.webhook.append(ct.CTkButton(master=self.win, text="delete", font=('Arial Rounded MT bold', 18), width=30, bg_color='#303030',
+                    self.webhook.append(ct.CTkButton(master=self.win, text="delete", font=('Noto Sans', 18), width=30, bg_color='#303030',
                               command=lambda current_url=self.webhook[2]: [Func.DelHook(current_url.get("0.0", "end")),self.win.destroy(), GUI()],
                               border_color="#872D26", hover_color='#872D26'))
-                    self.webhook.append(ct.CTkButton(master=self.win, text="choose", font=('Arial Rounded MT bold', 18), bg_color='#303030',
+                    self.webhook.append(ct.CTkButton(master=self.win, text="choose", font=('Noto Sans', 18), bg_color='#303030',
                             command=lambda current_url=self.webhook[2]: [self.ChooseHook(current_url.get("0.0", "end"))], width=20, border_color="#50C878", hover_color='#50C878'))
 
                     self.webhook[2].insert("0.0", hooksList[i][1])
@@ -113,19 +113,19 @@ class GUI:
         uperFame.place(x=0, y=0)
         middleFame = ct.CTkFrame(master=self.win, width=500, height=450, fg_color="#303030")
         middleFame.place(x=0, y=100)
-        header = ct.CTkLabel(master=self.win, text=name, font=('Arial Rounded MT bold', 34), bg_color='#303030', text_color='#14A5AE')
+        header = ct.CTkLabel(master=self.win, text=name, font=('Noto Sans', 34), bg_color='#303030', text_color='#14A5AE')
         header.place(relx=0.5, y=30, anchor=CENTER)
         self.text = ct.CTkTextbox(master=self.win, width=460, height=360, fg_color="#404040", bg_color='#303030', border_color="#14A5AE", border_width=2)
         self.text.place(x=20, y=120)
-        send= ct.CTkButton(master=self.win, text="send", font=('Arial Rounded MT bold', 24), bg_color='#242424',
+        send= ct.CTkButton(master=self.win, text="send", font=('Noto Sans', 24), bg_color='#242424',
                             command=lambda: [Func.Send(url,self.text.get("0.0", "end"),self.files_list),self.CleanFiles()], width=20, border_color="#50C878", hover_color='#50C878')
 
-        addFile= ct.CTkButton(master=self.win, text="Add file", font=('Arial Rounded MT bold', 18), bg_color='#303030',
+        addFile= ct.CTkButton(master=self.win, text="Add file", font=('Noto Sans', 18), bg_color='#303030',
                             command=lambda: [self.LoadFile()], width=20, border_color="#14A5AE", hover_color='#303030',corner_radius=8)
 
-        files = ct.CTkLabel(master=self.win, textvariable = self.files ,width=400, bg_color='#303030', fg_color="#262626",font=('Arial Rounded MT bold', 18),anchor = 'w', corner_radius=6)
+        files = ct.CTkLabel(master=self.win, textvariable = self.files ,width=400, bg_color='#303030', fg_color="#262626",font=('Noto Sans', 18),anchor = 'w', corner_radius=6)
 
-        close = ct.CTkButton(master=self.win, text="⨉", font=('Arial Rounded MT bold', 14),width=30,height=30,corner_radius = 10, bg_color='#303030',
+        close = ct.CTkButton(master=self.win, text="⨉", font=('Noto Sans', 14),width=30,height=30,corner_radius = 10, bg_color='#303030',
                           command=lambda: [plate.destroy(), close.destroy(),uperFame.destroy(),header.destroy(),middleFame.destroy(),self.text.destroy(),send.destroy(),addFile.destroy(),files.destroy()],
                           border_color="#872D26", hover_color='#872D26')
         close.place(x=465, y=5)
@@ -140,9 +140,9 @@ class GUI:
         self.text.delete("0.0", "end")
         fame = ct.CTkFrame(master=self.win, width=300, height=100, fg_color="#303030", bg_color='#404040',corner_radius=14,border_color="#14A5AE", border_width=2)
         fame.place(relx=0.5,rely=0.5, anchor=CENTER)
-        header = ct.CTkLabel(master=self.win, text="message sent", font=('Arial Rounded MT bold', 34), bg_color='#303030', text_color='#14A5AE')
+        header = ct.CTkLabel(master=self.win, text="message sent", font=('Noto Sans', 34), bg_color='#303030', text_color='#14A5AE')
         header.place(relx=0.5, y=280, anchor=CENTER)
-        ok = ct.CTkButton(master=self.win, text="OK", font=('Arial Rounded MT bold', 24), bg_color='#303030',
+        ok = ct.CTkButton(master=self.win, text="OK", font=('Noto Sans', 24), bg_color='#303030',
                             command=lambda: [fame.destroy(),header.destroy(),ok.destroy()], width=20, border_color="#50C878", hover_color='#50C878')
         ok.place(relx=0.5, y=325, anchor=CENTER)
 
@@ -172,15 +172,15 @@ class GUI:
             self.action = True
             fame = ct.CTkFrame(master=self.win, width=500, height=70, fg_color="#303030",border_color='#14A5AE',border_width=2)
             fame.place(x=0, y=0)
-            title = ct.CTkLabel(master=self.win, text="Add new Webhook", font=('Arial Rounded MT bold', 24), bg_color='#303030', text_color='#14A5AE')
+            title = ct.CTkLabel(master=self.win, text="Add new Webhook", font=('Noto Sans', 24), bg_color='#303030', text_color='#14A5AE')
             title.place(x=11, y=5)
-            url = ct.CTkEntry(master=self.win, width=400, bg_color='#303030', fg_color="#262626",font=('Arial Rounded MT bold', 18), placeholder_text="WebHook URL")
+            url = ct.CTkEntry(master=self.win, width=400, bg_color='#303030', fg_color="#262626",font=('Noto Sans', 18), placeholder_text="WebHook URL")
             url.place(x=10, y=35)
-            apply = ct.CTkButton(master=self.win, text="⩗", font=('Arial Rounded MT bold', 14),width=35,height=30,corner_radius = 10, bg_color='#303030',
+            apply = ct.CTkButton(master=self.win, text="⩗", font=('Noto Sans', 14),width=35,height=30,corner_radius = 10, bg_color='#303030',
                           command=lambda: [Func.AddHook(url.get()), self.win.destroy(), GUI()],
                           border_color="#50C878", hover_color='#50C878')
 
-            close = ct.CTkButton(master=self.win, text="⨉", font=('Arial Rounded MT bold', 14),width=35,height=30,corner_radius = 10, bg_color='#303030',
+            close = ct.CTkButton(master=self.win, text="⨉", font=('Noto Sans', 14),width=35,height=30,corner_radius = 10, bg_color='#303030',
                           command=lambda: [fame.destroy(), title.destroy(), close.destroy(), url.destroy(), apply.destroy(), self.EndAction()],
                           border_color="#872D26", hover_color='#872D26')
             close.place(x=450, y=5)
