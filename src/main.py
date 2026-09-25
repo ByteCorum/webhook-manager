@@ -10,6 +10,6 @@ if __name__ == "__main__":
         pass
     if not os.path.exists("data/key.db"):
         key = Crypt.GenerateKey()
-        enc_key = Crypt.Encrypt64(str(key))
+        enc_key = Crypt.Encrypt64(key.decode("utf-8"))
         File.Write(enc_key,"data/key.db")
     gui.GUI()

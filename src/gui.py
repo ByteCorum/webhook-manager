@@ -11,9 +11,6 @@ class GUI:
         self.setTheme = ct.StringVar(value="dark")
         self.appRoot = path.dirname(path.abspath(__file__))
         self.gitimg = f"{self.appRoot}/resources/git.png"
-        # wait_gate = ct.StringVar()
-        # self.win.bind("<Button-1>", lambda e: wait_gate.set("go"))
-        # self.win.wait_variable(wait_gate)   # freezes here until user clicks
         self.WinProperties()
         self.count = 100
         self.action = False
@@ -60,7 +57,7 @@ class GUI:
         self.uperFame.place(x=0, y=0)
         self.header = ct.CTkLabel(master=self.win, text="webhook-manager", font=('Arial Rounded MT bold', 30), bg_color='#303030', text_color='#14A5AE')
         self.header.place(x=100, y=15)
-        self.addNew = ct.CTkButton(master=self.win, text="+", font=('Arial Rounded MT bold', 45), width=65, bg_color='#303030',border_color='#14A5AE',
+        self.addNew = ct.CTkButton(master=self.win, text="+", font=('Arial Rounded MT bold', 40), width=65,height=60, bg_color='#303030',border_color='#14A5AE',
                        command=lambda: [self.AddHook()])
         self.addNew.place(x=5, y=5)
         gitimage = ct.CTkImage( light_image=Img.open(self.gitimg), dark_image=Img.open(self.gitimg), size=(30, 30))
@@ -89,8 +86,8 @@ class GUI:
                     self.webhook[0].place(x=25, y=self.count)
                     self.webhook[2].place(x=35, y=self.count + 45)
                     self.webhook[1].place(x=35, y=self.count + 10)
-                    self.webhook[3].place(x=380, y=self.count + 10)
-                    self.webhook[4].place(x=280, y=self.count + 10)
+                    self.webhook[3].place(x=380, y=self.count + 6)
+                    self.webhook[4].place(x=280, y=self.count + 6)
                     self.count = self.count + 150
 
                     self.webhooks.append(self.webhook)
@@ -126,20 +123,20 @@ class GUI:
 
         files = ct.CTkLabel(master=self.win, textvariable = self.files ,width=400, bg_color='#303030', fg_color="#262626",font=('Arial Rounded MT bold', 18),anchor = 'w', corner_radius=6)
 
-        close = ct.CTkButton(master=self.win, text="⨉", font=('Arial Rounded MT bold', 18),width=25,height=30,corner_radius = 10, bg_color='#303030',
+        close = ct.CTkButton(master=self.win, text="⨉", font=('Arial Rounded MT bold', 14),width=30,height=30,corner_radius = 10, bg_color='#303030',
                           command=lambda: [plate.destroy(), close.destroy(),uperFame.destroy(),header.destroy(),middleFame.destroy(),self.text.destroy(),send.destroy(),addFile.destroy(),files.destroy()],
                           border_color="#872D26", hover_color='#872D26')
-        close.place(x=450, y=5)
+        close.place(x=465, y=5)
         addFile.place(x=5, y=503)
         files.place(x=93, y=505)
-        send.place(x=205, y=557)
+        send.place(x=205, y=552)
 
 
     def CleanFiles(self):
         self.files_list =[]
         self.files.set("files")
         self.text.delete("0.0", "end")
-        fame = ct.CTkFrame(master=self.win, width=300, height=100, fg_color="#303030", bg_color='#404040',corner_radius=30,border_color="#14A5AE", border_width=2)
+        fame = ct.CTkFrame(master=self.win, width=300, height=100, fg_color="#303030", bg_color='#404040',corner_radius=14,border_color="#14A5AE", border_width=2)
         fame.place(relx=0.5,rely=0.5, anchor=CENTER)
         header = ct.CTkLabel(master=self.win, text="message sent", font=('Arial Rounded MT bold', 34), bg_color='#303030', text_color='#14A5AE')
         header.place(relx=0.5, y=280, anchor=CENTER)
@@ -177,11 +174,11 @@ class GUI:
             title.place(x=11, y=5)
             url = ct.CTkEntry(master=self.win, width=400, bg_color='#303030', fg_color="#262626",font=('Arial Rounded MT bold', 18), placeholder_text="WebHook URL")
             url.place(x=10, y=35)
-            apply = ct.CTkButton(master=self.win, text="⩗", font=('Arial Rounded MT bold', 18),width=35,height=30,corner_radius = 10, bg_color='#303030',
+            apply = ct.CTkButton(master=self.win, text="⩗", font=('Arial Rounded MT bold', 14),width=35,height=30,corner_radius = 10, bg_color='#303030',
                           command=lambda: [Func.AddHook(url.get()), self.win.destroy(), GUI()],
                           border_color="#50C878", hover_color='#50C878')
 
-            close = ct.CTkButton(master=self.win, text="⨉", font=('Arial Rounded MT bold', 18),width=35,height=30,corner_radius = 10, bg_color='#303030',
+            close = ct.CTkButton(master=self.win, text="⨉", font=('Arial Rounded MT bold', 14),width=35,height=30,corner_radius = 10, bg_color='#303030',
                           command=lambda: [fame.destroy(), title.destroy(), close.destroy(), url.destroy(), apply.destroy(), self.EndAction()],
                           border_color="#872D26", hover_color='#872D26')
             close.place(x=450, y=5)

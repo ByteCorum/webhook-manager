@@ -164,3 +164,4 @@ data/
 webhook-manager*
 main.*/
 com.*.webhook_manager*
+.vscode/
